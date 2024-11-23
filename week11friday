@@ -1,0 +1,114 @@
+On Friday 11/22/2024, I worked on my canvas homework.
+I kept at the binary trees long practice assignment.
+I reviewed these links to learn more about binary trees.
+Its something that is still a bit confusing so I just want to make sure I am grasping the concept fully
+https://www.geeksforgeeks.org/introduction-to-binary-tree/
+https://www.youtube.com/watch?v=Gt2yBZAhsGM
+
+I also went over the canvas reading and I am going to review more over the weekend.
+Im really excited to start the bubble sort .
+
+
+
+heres my binary tree code .
+
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(val, currentNode = this.root) {
+    const newNode = new TreeNode(val);
+
+    if (this.root === null) {
+      this.root = newNode;
+      return this;
+    }
+
+    if (currentNode === null) {
+      return newNode;
+    }
+
+    if (val < currentNode.val) {
+      currentNode.left = this.insert(val, currentNode.left);
+    } else {
+      currentNode.right = this.insert(val, currentNode.right);
+    }
+
+    return currentNode;
+  }
+
+  search(val, currentNode = this.root) {
+    if (currentNode === null) return false;
+    if (val === currentNode.val) return true;
+
+    if (val < currentNode.val) {
+      return this.search(val, currentNode.left);
+    } else {
+      return this.search(val, currentNode.right);
+    }
+  }
+
+  preOrderTraversal(currentNode = this.root) {
+    if (currentNode === null) return;
+    console.log(currentNode.val);
+    this.preOrderTraversal(currentNode.left);
+    this.preOrderTraversal(currentNode.right);
+  }
+
+  inOrderTraversal(currentNode = this.root) {
+    if (currentNode === null) return;
+    this.inOrderTraversal(currentNode.left);
+    console.log(currentNode.val);
+    this.inOrderTraversal(currentNode.right);
+  }
+
+  postOrderTraversal(currentNode = this.root) {
+    if (currentNode === null) return;
+    this.postOrderTraversal(currentNode.left);
+    this.postOrderTraversal(currentNode.right);
+    console.log(currentNode.val);
+  }
+
+  
+  breadthFirstTraversal() {
+    if (this.root === null) return;
+
+    const queue = [this.root];
+
+    while (queue.length) {
+      const currentNode = queue.shift();
+      console.log(currentNode.val);
+
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+    }
+  }
+
+
+  depthFirstTraversal() {
+    if (this.root === null) return;
+
+    const stack = [this.root];
+
+    while (stack.length) {
+      const currentNode = stack.pop();
+      console.log(currentNode.val);
+
+      if (currentNode.right) stack.push(currentNode.right);
+      if (currentNode.left) stack.push(currentNode.left);
+    }
+  }
+}
+
+module.exports = { BinarySearchTree, TreeNode };
+
+
