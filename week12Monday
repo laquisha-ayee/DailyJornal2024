@@ -1,0 +1,306 @@
+Today is Monday December 12th 2024.
+I am back from break refreshed &hungry to code!
+I didnt get to code as much as I wanted to because my house was full of needy family members.
+So im ready to get back to the daily coding schedue I have grown accustom to(: 
+Today I reviewed all the reading in canvas.
+I also completed the quiz and got 100% !
+
+Here is some of the notes I have so far. 
+I am planning on working more on them tonight.
+
+## Introduction to Graphs
+
+A graph is a data structure consisting of:
+
+- Vertices (nodes) - Points that represent entities
+- Edges - Connections between vertices that show relationships
+
+
+
+
+Types of Graphs:
+
+** Directed (edges have direction) ** 
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  addNode(node) {
+    if (!this.adjacencyList[node]) {
+      this.adjacencyList[node] = [];
+    }
+  }
+
+  addEdge(node1, node2) {
+    if (this.adjacencyList[node1] && this.adjacencyList[node2]) {
+      this.adjacencyList[node1].push(node2); // Directed edge
+    }
+  }
+}
+
+// Example usage
+const graph = new Graph();
+
+graph.addNode('A');
+graph.addNode('B');
+graph.addNode('C');
+graph.addNode('D');
+
+graph.addEdge('A', 'B');
+graph.addEdge('A', 'C');
+graph.addEdge('B', 'D');
+graph.addEdge('C', 'D');
+
+console.log(graph.adjacencyList);
+
+
+  Class Structure: 
+The Graph class has an adjacency list to store nodes and their edges.
+
+  Add Node Method: 
+The addNode method checks if the node already exists in the adjacency list. 
+If it doesn’t, it initializes an empty array for that node.
+
+  Add Edge Method: 
+The addEdge method adds a directed edge from one node to another by 
+adding the destination node to the adjacency list of the starting node.
+
+
+
+
+
+
+** Undirected (edges have no direction) **
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  addNode(node) {
+    if (!this.adjacencyList[node]) {
+      this.adjacencyList[node] = [];
+    }
+  }
+
+  addEdge(node1, node2) {
+    if (this.adjacencyList[node1] && this.adjacencyList[node2]) {
+      this.adjacencyList[node1].push(node2);
+      this.adjacencyList[node2].push(node1); // Undirected edge
+    }
+  }
+}
+
+// Example usage
+const graph = new Graph();
+
+graph.addNode('A');
+graph.addNode('B');
+graph.addNode('C');
+graph.addNode('D');
+
+graph.addEdge('A', 'B');
+graph.addEdge('A', 'C');
+graph.addEdge('B', 'D');
+graph.addEdge('C', 'D');
+
+console.log(graph.adjacencyList);
+
+Explanation:
+  Class structire: 
+the graph class has an adjacency list to store nodes and their edges.
+
+  Add node method: 
+the addNode method checks if the node already exist in the adjacency list.
+if it doesnt , it initializes an empty array for that node.
+
+  Add edge method: 
+the addEdge method adds an undirected edge between two nodes by 
+adding each node to the others adjacency list.
+
+
+
+
+
+
+** Weighted (edges have values/weights) **
+class WeightedGraph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  addNode(node) {
+    if (!this.adjacencyList[node]) {
+      this.adjacencyList[node] = [];
+    }
+  }
+
+  addEdge(node1, node2, weight) {
+    if (this.adjacencyList[node1] && this.adjacencyList[node2]) {
+      this.adjacencyList[node1].push({ node: node2, weight });
+    }
+  }
+}
+
+// Example usage
+const graph = new WeightedGraph();
+
+graph.addNode('A');
+graph.addNode('B');
+graph.addNode('C');
+graph.addNode('D');
+
+graph.addEdge('A', 'B', 5);
+graph.addEdge('A', 'C', 3);
+graph.addEdge('B', 'D', 2);
+graph.addEdge('C', 'D', 7);
+
+console.log(graph.adjacencyList);
+
+  Class Structure: 
+The WeightedGraph class has an adjacency list to store nodes and their edges with weights.
+
+  Add Node Method: 
+The addNode method checks if the node already exists in the adjacency list. 
+If it doesn’t, it initializes an empty array for that node.
+
+  Add Edge Method: 
+The addEdge method adds an edge between two nodes with a specified weight. 
+It pushes an object containing the target node and the weight to the adjacency list of the starting node.
+
+
+
+
+
+
+** Cyclic/Acyclic **
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  addNode(node) {
+    if (!this.adjacencyList[node]) {
+      this.adjacencyList[node] = [];
+    }
+  }
+
+  addEdge(node1, node2) {
+    if (this.adjacencyList[node1] && this.adjacencyList[node2]) {
+      this.adjacencyList[node1].push(node2);
+    }
+  }
+}
+
+// Cyclic Graph Example
+const cyclicGraph = new Graph();
+cyclicGraph.addNode('A');
+cyclicGraph.addNode('B');
+cyclicGraph.addNode('C');
+cyclicGraph.addEdge('A', 'B');
+cyclicGraph.addEdge('B', 'C');
+cyclicGraph.addEdge('C', 'A'); // Cycle: A -> B -> C -> A
+
+console.log('Cyclic Graph:', cyclicGraph.adjacencyList);
+
+// Acyclic Graph Example
+const acyclicGraph = new Graph();
+acyclicGraph.addNode('A');
+acyclicGraph.addNode('B');
+acyclicGraph.addNode('C');
+acyclicGraph.addNode('D');
+acyclicGraph.addEdge('A', 'B');
+acyclicGraph.addEdge('B', 'C');
+acyclicGraph.addEdge('C', 'D'); // No cycles in this graph
+
+console.log('Acyclic Graph:', acyclicGraph.adjacencyList);
+
+  Cyclic Graphs: 
+Useful in scenarios where feedback loops are essential, such as in network routing, genetics, and certain computational processes.
+  Cyclic Graphs:
+A cyclic graph is a graph that contains at least one cycle. 
+A cycle in a graph is a path that starts from a node and returns to the same node without repeating any edges or vertices (except the starting and ending node). 
+In other words, you can traverse the graph in such a way that you visit some nodes more than once.
+
+  Acyclic Graphs: 
+Crucial in contexts where circular dependencies would be problematic, such as task scheduling, build systems, and dependency resolution.
+  Acyclic Graphs:
+An acyclic graph is a graph that does not contain any cycles. 
+It means there's no way to start at a node, traverse through the graph, and come back to the same node without retracing your steps.
+
+
+
+## Graph Traversal Methods
+
+### Breadth-First Traversal (BFT)
+
+Explores a graph level by level:
+
+- Uses a queue data structure
+- Visits all neighbors at current level before moving deeper
+- Good for finding shortest paths
+
+### Depth-First Traversal (DFT)
+
+Explores as far as possible along each branch:
+
+- Uses a stack or recursion
+- Goes deep before exploring neighbors
+- Good for maze solving and topological sorting
+
+## Breadth-First Search (BFS)
+
+A specific application of BFT used to:
+
+- Find shortest paths in unweighted graphs
+- Test if a graph is connected
+- Find all vertices within one connected component
+
+## Finding Shortest Paths
+
+Common algorithms:
+
+## Dijkstra's Algorithm (weighted graphs)
+Used to find the shortest path from a source node to all other nodes in a weighted graph.
+Uses a priority queue.
+
+## BFS (unweighted graphs)
+Key Characteristics of BFS in Unweighted Graphs
+Layer-by-Layer Exploration:
+BFS explores nodes level by level, ensuring that all nodes at the current depth level are visited before moving on to the next level. 
+This makes it particularly effective for finding the shortest path in unweighted graphs.
+
+Queue Data Structure:
+BFS uses a queue to manage the nodes to be visited. 
+Nodes are added to the end of the queue and processed from the front, ensuring a First-In-First-Out (FIFO) order.
+
+FIFO (First In, First Out) Principle:
+The first node added to the queue is the first one to be processed. 
+This principle is crucial for the orderly exploration of nodes.
+
+Shortest Path Guarantee:
+In unweighted graphs, BFS guarantees the shortest path between the starting node and any other reachable node. 
+This is because it explores all nodes at the current distance before moving further away.
+
+Visited Set:
+BFS keeps track of visited nodes to prevent reprocessing, ensuring efficiency and correctness. 
+This set helps in avoiding infinite loops in cyclic graphs.
+
+Breadth-First Nature:
+Unlike Depth-First Search (DFS), which delves deep into one branch before backtracking, BFS systematically explores each level, making it breadth-first.
+
+## Bellman-Ford (graphs with negative weights)
+
+Key Characteristics of Bellman-Ford Algorithm:
+Handles Negative Weights: It can detect and handle negative weight edges, which are edges that reduce the total path cost.
+Detects Negative Cycles: The algorithm can detect negative weight cycles (cycles where the total weight is negative), which can lead to infinitely decreasing path costs.
+Single Source Shortest Path: It finds the shortest path from a given source node to all other nodes in the graph.
+
+
+## Problem-Solving Strategies
+
+- Identify the type of graph problem
+- Choose appropriate traversal method
+- Consider time and space complexity
+- Test with small examples first
+- Consider edge cases (empty graph, disconnected components)
