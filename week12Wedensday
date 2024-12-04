@@ -1,0 +1,224 @@
+Today is Wednesday December 4th, 2024.
+After taking my practice quiz and getting 85% on my first try,
+I felt confident enough to get my practice assessment started.
+It wasnt as hard as I thought. 
+I have been repeating a new mantra to help me keep going.
+
+"There are no secrets to success. 
+It is the result of preparation, hardwork, and LEARNING from failure."
+
+Even though I worked on my practice assessment today. 
+I didnt get it finished quite yet but hey at least I dipped my toes in. [: 
+I also completed my canvas work. 
+Here is some code I got done today.
+
+
+class SocialNetwork {
+  constructor() {
+    this.users = {};
+    this.follows = {};
+    this.currentID = 0;
+  }
+
+  addUser(name) {
+    const userID = ++this.currentID;
+    this.users[userID] = { id: userID, name: name };
+    this.follows[userID] = new Set();
+    
+    return userID;
+  }
+
+  getUser(userID) {
+    return this.users[userID] || null;
+  }
+
+  follow(userID1, userID2) {
+    const user1 = this.getUser(userID1);
+    const user2 = this.getUser(userID2);
+  
+    if (user1 && user2) {
+      this.follows[userID1].add(userID2);
+      return true;
+    }
+    return false;
+  }
+
+unfollow(userID1, userID2) { 
+  const user1 = this.getUser(userID1);
+
+  if (user1 && this.follows[userID1].has(userID2)) {
+    this.follows[userID1].delete(userID2);
+    return true;
+  }
+  return false;
+
+}
+
+
+  getFollows(userID) {
+    return this.follows[userID] || null;
+  }
+
+  getFollowers(userID) {
+    const followers = new Set();
+    for (const id in this.follows) {
+      if (this.follows[id].has(userID)) {
+        followers.add(Number(id));
+      }
+    } 
+    return followers;
+  }
+
+
+
+  getRecommendedFollows(userID, degrees = 1) {
+    const user = this.getUser(userID);
+    if (!user) return null;
+
+    const recommendations = new Set();
+    const userFollows = this.getFollows(userID);
+    
+    if (!userFollows) return Array.from(recommendations);
+
+    userFollows.forEach(followingID => {
+      const secondDegreeFollows = this.getFollowers(followingID);
+      if (secondDegreeFollows) {
+        secondDegreeFollows.forEach(recommendID => {
+          if (!userFollows.has(recommendID) && recommendID !== userID){
+            recommendations.add(recommendID);
+          }
+        });
+      }
+      
+    });
+
+return Array.from(recommendations); 
+
+
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+function findNeighbors(node, matrix) {
+    const [row, col] = node;
+    const neighbors = [];
+    const numRows = matrix.length;
+    const numCols = matrix[0].length;
+    // Up
+    if (row > 0) neighbors.push([row - 1, col]);
+
+    // Down
+    if (row < numRows - 1) neighbors.push([row + 1, col]);
+    
+    // Left
+    if (col > 0) neighbors.push([row, col - 1]);
+    
+    // Right
+    if (col < numCols - 1) neighbors.push([row, col + 1]);
+    
+    return neighbors; 
+}
+
+
+function bfsPath(matrix, startNode, endValue) {
+  const queue = [startNode];
+  const visited = new Set();
+  const path = [];
+  
+  visited.add(startNode.toString());
+
+  while (queue.length > 0) {
+    const currentNode = queue.shift();
+    path.push(currentNode);
+
+    const [row, col] = currentNode;
+    if (matrix[row][col] === endValue){
+        return path;
+    }
+const neighbors = findNeighbors(currentNode, matrix);
+for (const neighbor of neighbors) {
+    const neighborString = neighbor.toString();
+    if (!visited.has(neighborString)) {
+        visited.add(neighborString);
+        queue.push(neighbor);
+    }
+}
+
+
+  }
+  
+  return false;
+
+}
+
+
+// ***** UNCOMMENT FOR LOCAL TESTING *****
+
+const matrix1 = [ 
+    [  1,  2,  3,  4 ],
+    [  5,  6,  7,  8 ],
+    [  9, 10, 11, 12 ],
+    [ 13, 14, 15, 16 ]
+];
+
+// // EXAMPLE TESTS #1. Tests for findNeighbors function
+ console.log(findNeighbors([1,1], matrix1)) // Finds all 4 neighbors from an
+// // internal node (left, right, down, up)
+// // [ [ 0, 1 ], [ 2, 1 ], [ 1, 2 ], [ 1, 0 ] ]
+
+ console.log(findNeighbors([0,0], matrix1)); // Finds two neighbors from a
+// // corner node // [ [ 1, 0 ], [ 0, 1 ] ]
+
+ console.log(findNeighbors([3,1], matrix1)); // Finds three neighbors from
+// // an edge node // [ [ 2, 1 ], [ 3, 2 ], [ 3, 0 ] ]
+
+
+// EXAMPLE TESTS #2. Tests for bfsPath function
+
+ console.log(bfsPath(matrix1, [0,0], 16)); // can traverse the entire matrix
+// returns an array of coordinates with no duplicates:
+
+// [
+//     [ 0, 0 ], [ 1, 0 ],
+//     [ 0, 1 ], [ 2, 0 ],
+//     [ 1, 1 ], [ 0, 2 ],
+//     [ 3, 0 ], [ 2, 1 ],
+//     [ 1, 2 ], [ 0, 3 ],
+//     [ 3, 1 ], [ 2, 2 ],
+//     [ 1, 3 ], [ 3, 2 ],
+//     [ 2, 3 ], [ 3, 3 ]
+//  ]
+
+// Note for debugging purposes: The coordinates should represent the following matrix values, in order:
+// 1 5 2 9 6 3 13 10 7 4 14 11 8 15 12 16
+
+ console.log(bfsPath(matrix1, [2,2], 11)); // returns a single node if end
+// // value is located at start node
+// // [ [ 2, 2 ] ]
+
+ console.log(bfsPath(matrix1, [1,2], 8)); // can handle various start nodes 
+// // and end values
+// // [ [ 1, 2 ], [ 0, 2 ], [ 2, 2 ], [ 1, 1 ], [ 1, 3 ] ]
+
+ console.log(bfsPath(matrix1, [0,0], 17)); // can return false if end value 
+// // is not found
+// // false
+
+/*************DO NOT MODIFY UNDER THIS LINE ***************/
+
+module.exports = [findNeighbors, bfsPath];
+
+
+
+
+
+
