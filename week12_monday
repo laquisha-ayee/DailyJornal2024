@@ -1,0 +1,126 @@
+Today is Tuesday December 3rd, 2024.
+I opened up my practice asssessment and checked out the problems. 
+I wasnt brave enough to start it yet lol
+Instead I worked on my canvas projects. I really enjoyed learning all the new code.
+Here are a few notes I took from the stuff I worked on today.
+
+
+
+
+## Simple Breadth-First Traversal
+(Traverse a graph using Breadth-First Search (BFS) and print each node.)
+Queue: Use a queue to manage nodes to visit.
+FIFO Order: Nodes are processed in First-In-First-Out order.
+Visited Set: Keep track of visited nodes to avoid reprocessing.
+
+** Steps **
+
+Initialize the queue with the starting node.
+Mark the starting node as visited.
+While the queue is not empty:
+-Dequeue a node.
+-Print or process the node.
+-Enqueue all unvisited neighbors.
+
+
+
+
+
+
+## Simple Depth-First Traversal
+(Traverse a graph using Depth-First Search (DFS) and print each node.)
+Stack or Recursion: Use a stack or recursion for traversal.
+LIFO Order: Nodes are processed in Last-In-First-Out order.
+Visited Set: Keep track of visited nodes to avoid reprocessing.
+
+** Steps **
+
+Initialize the stack with the starting node.
+Mark the starting node as visited.
+While the stack is not empty:
+-Pop a node from the stack.
+-Print or process the node.
+-Push all unvisited neighbors onto the stack.
+
+
+
+
+
+## Refactor Breadth-First Traversal
+(Refactor BFS to return an array of visited nodes.)
+Result Array: Collect nodes in an array.
+Return Array: Return the array at the end of traversal.
+
+** Steps **
+
+Initialize the queue with the starting node and an empty result array.
+Mark the starting node as visited.
+While the queue is not empty:
+-Dequeue a node.
+-Add the node to the result array.
+-Enqueue all unvisited neighbors.
+Return the result array.
+
+
+
+
+
+## Simple Breadth-First Search
+(Determine if there is a path between two nodes using BFS.)
+Queue: Use a queue to manage nodes to visit.
+Visited Set: Keep track of visited nodes to avoid reprocessing.
+Return Boolean: Return true if the end node is reached, otherwise false.
+
+** Steps **
+
+Initialize the queue with the starting node.
+Mark the starting node as visited.
+While the queue is not empty:
+-Dequeue a node.
+-If the node is the end node, return true.
+-Enqueue all unvisited neighbors.
+Return false if the end node is not reached.
+
+
+
+
+
+
+## A Shortest Path
+(Find a single shortest path between two nodes using BFS.)
+Queue: Use a queue to manage nodes and their paths.
+Visited Set: Keep track of visited nodes to avoid reprocessing.
+Return Path: Return the path as an array if the end node is reached, otherwise null.
+
+
+** Steps **
+Initialize the queue with the starting node and its initial path.
+Mark the starting node as visited.
+While the queue is not empty:
+-Dequeue a node and its path.
+-If the node is the end node, return the path.
+-Enqueue all unvisited neighbors with updated paths.
+Return null if the end node is not reached.
+
+
+
+
+
+
+## Degrees of Separation
+(Return the degrees of separation between two nodes using BFS.)
+Queue: Use a queue to manage nodes and their path lengths.
+Visited Set: Keep track of visited nodes to avoid reprocessing.
+Return Degrees: Return the length of the path (degrees of separation).
+Handle Same Node: Return 0 if the start node is the same as the end node.
+
+
+** Steps **
+Initialize the queue with the starting node and a path length of 0.
+Mark the starting node as visited.
+While the queue is not empty:
+-Dequeue a node and its path length.
+-If the node is the end node, return the path length.
+-Enqueue all unvisited neighbors with incremented path lengths.
+Return null if the end node is not reached.
+
