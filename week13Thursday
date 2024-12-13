@@ -1,0 +1,84 @@
+Today is thursday December 12th, 2024.
+I worked on my projects in canvas. 
+I learned about css.
+My favorite project was the css colors borders and shadows.
+It was so much fun getting to see my code come to life . 
+Heres a bit of my code / Notes.
+
+
+
+** Borders **
+border-width: Defines the width of the border (e.g., 5px).
+border-color: Sets the color of the border (e.g., blue).
+border-style: Determines the style of the border (e.g., solid, dotted).
+border-radius: Rounds the edges of the border (e.g., 5px).
+
+/* Border for the first box */
+.box1 {
+  border: 5px solid blue;
+}
+
+/* Border for the second box */
+.box2 {
+  border: 2px dotted red;
+  border-radius: 5px;
+}
+
+
+
+** Colors **
+color: Sets the color of the text. 
+Can use hexadecimal (e.g., #FFC300) or RGB (e.g., rgb(235, 62, 71)).
+background-color: Sets the background color of an element.
+
+/* Color for the first text */
+.text1 {
+  color: #FFC300;
+}
+
+/* Color for the second text */
+.text2 {
+  color: rgb(235, 62, 71);
+}
+
+/* Background color for boxes */
+.box {
+  background-color: #f0f0f0; /* Adjust the color as needed */
+}
+
+
+
+
+** Opacity **
+Background-color: Use rgba to set color and opacity (e.g., rgba(0, 0, 0, 0.6)).
+Text Opacity: Sets the opacity level of an element (e.g., 0.5).
+
+/* Background color with opacity for Box 3 */
+.box3 {
+  background-color: rgba(0, 0, 0, 0.6); /* Adjust the color as needed */
+}
+
+/* Opacity for all h2 elements */
+h2 {
+  opacity: 0.5;
+}
+
+
+
+
+** Box Shadows **
+box-shadow: Adds shadow to elements. 
+Properties include horizontal offset, vertical offset, blur-radius, and color.
+
+/* Shadow for Box 5 */
+.box5 {
+  box-shadow: 8px 20px 15px teal;
+}
+
+/* Shadow for Box 6 */
+.box6 {
+  box-shadow: 5px -10px 0 #800000;
+}
+
+
+
