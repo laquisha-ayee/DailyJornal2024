@@ -1,0 +1,40 @@
+Today is Thursday December 19th,2024.
+I finished up working on my practice assessment.
+I dont think I can share the code from there but here are a few notes 
+I took from the work I completed.
+
+## Project Planning Notes ##
+
+**1. Draw a Wireframe:
+Header: Contains navigation bar with links.
+Main: Contains three event cards.
+Footer: Contains footer content.
+
+
+**2. Compare Desktop and Mobile Views:
+Desktop (1024px): Horizontal layout for navigation and event cards.
+Mobile (700px): Stack navigation and event cards vertically.
+
+
+**3. List of Steps:
+A. Set Up the Project:
+Create index.html and main.css files.
+
+B. Create HTML Structure:
+Layout the HTML elements for header, main, and footer.
+
+C. Style the Header:
+Add styles for the header and navigation.
+
+D. Style the Main Content:
+Add styles for the event cards.
+
+E. Style the Footer:
+Add styles for the footer.
+
+F. Make the Site Responsive:
+Use media queries to adjust layout for different screen sizes.
+
+G. Final Touches:
+polish styles and ensure everything looks cohesive.
+
